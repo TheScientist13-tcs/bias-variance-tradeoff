@@ -130,10 +130,11 @@ def main():
             fig.update_layout(height=600)
             st.plotly_chart(fig)
     with st.sidebar:
-        st.markdown("## Simulation")
-        num_sims = st.number_input(
-            "Enter Number of Simulation Iterations", min_value=1, max_value=9
-        )
+        if num_models > 0:
+            st.markdown("## Simulation")
+            num_sims = st.number_input(
+                "Enter Number of Simulation Iterations", min_value=1, max_value=9
+            )
     with tab2:
         rows, cols = calc_rows_cols(num_sims)
         subplot_titles = tuple([f"Simulation {t+1}" for t in range(0, num_sims)])
